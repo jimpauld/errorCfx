@@ -1,0 +1,10 @@
+Let(
+[
+	~error = JSONGetElement(DAPIResponseObject; "messages[0]" )
+];
+
+	JSONSetElement(
+		~error;
+		["scriptStep"; scriptStep; JSONString]
+	)
+)
