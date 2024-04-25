@@ -1,5 +1,6 @@
 /**
  * =====================================
+ *  error.GetLast ( customText )
  *
  * DESCRIPTION :
  *     returns an error object based on the error information set in the error flags
@@ -15,7 +16,7 @@
  *     error.Text custom function
  *     JSON.isValid custom function
  *     getScriptEnvironment custom function
- * 
+ * =====================================
  */
 
 Let (
