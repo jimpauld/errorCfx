@@ -1,0 +1,28 @@
+/**
+*
+* returns the error code for an error Object. It should return 0 for no error, and number for any other error
+*
+* @param errorObject error as a JSON Object
+* @return errorCode the number code for the errorObject
+*
+*/
+
+
+Case(
+
+      // nothing passed, no error. IS THIS RIGHT, or should this be the same as invalid json
+      IsEmpty(errorObject) ; 0;
+
+
+      // invalid json
+      Left( JSONFormatElements ( errorObject ) ; 2 ) = "? "; JSONFormatElements ( errorObject ) ;
+ 
+
+      // if there is an empty error code then no error
+      JSONGetElement(errorObject; "code" ) = "" ; 0;
+
+
+     // finally just get the code as a number
+     GetAsNumber(  JSONGetElement(errorObject; "code" ) )
+
+)
