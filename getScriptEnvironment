@@ -1,0 +1,9 @@
+JSONSetElement (
+	"{}" ;
+	[ "fileName" ; Get ( FileName ) ; JSONString ] ;
+	[ "scriptName" ; Get ( ScriptName ) ; JSONString ] ;
+	[ "scriptParameter" ; Get ( ScriptParameter ) ; JSONString ] ;
+	[ "layoutName" ; Get ( LayoutName ) ; JSONString ] ;
+	[ "systemPlatform" ; Get ( SystemPlatform ) ; JSONString ] ;
+	[ "systemVersion" ; Get ( SystemVersion ) ; JSONString ]
+)
