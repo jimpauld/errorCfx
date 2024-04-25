@@ -14,7 +14,7 @@
  *     null custom function
  *     error.Text custom function
  *     JSON.isValid custom function
- *.    getScriptEnvironment custom function
+ *     getScriptEnvironment custom function
  * 
  */
 
