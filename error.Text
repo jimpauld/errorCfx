@@ -1,17 +1,22 @@
 /**
+ * =====================================
+ * error.Text ( errorCode )
  *
- * looks up the error descriptions
+ * RETURNS:
+ *	The text description corresponding to the error code
  *
- * @param {number} errorCode the FileMaker Error Code
- * 
- * @return {string} an error object
+ * PARAMETERS:
+ *	errorCode = an integer corresponding to a FileMaker or custom error code
  *
- * @module fm-error-functions
- * @see https://github.com/karbonfm/fm-error-functions
+ * DEPENDENCIES:
+ *	None
  *
- * @history 2015-10-01, todd@geistinteractive.com, created
- * @history 2023-09-16, todd.geist@proofgeist.com, updated
+ * HISTORY:
+ *	MODIFIED on 2024-09-24 Corn Walker, corn.walker@proofgeist.com
+ *		changed custom error description for FileMaker transaction errors
+ *	CREATED on 2023-09-23 Todd Geist, todd.geist@proofgeist.com
  *
+ * =====================================
  */
 
 
