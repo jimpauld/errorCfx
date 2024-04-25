@@ -1,0 +1,88 @@
+/* 
+ *
+ * DESCRIPTION :
+ *     returns an error object based on the error information set in the error flags
+ *
+ *     if the LastError flag is set to 5499 will return the custom error object found 
+ *     on line 4 of the LastErrorDetail flag 
+ *
+ * PARAMETERS
+ *     customText ( optional ) - replaces the default error message
+ *
+ * DEPENDENCIES :
+ *     null custom function
+ *     error.Text custom function
+ *     JSON.isValid custom function
+ *.    getScriptEnvironment custom function
+ * 
+ */
+
+Let (
+	[
+  	__errorCode = Get ( LastError ) ;
+  	__defaultMessage = error.Text ( __errorCode ) ;
+  	__errorDetail = Get ( LastErrorDetail ) ;
+  	__errorDetail.scriptName = GetValue ( __errorDetail ; 1 ) ;
+ 	__errorDetail.scriptStep = GetValue ( __errorDetail ; 2 ) ;
+  	__errorDetail.lineNumber = GetValue ( __errorDetail ; 3 ) ;
+  	__errorDetail.message = GetValue ( __errorDetail ; 4 ) ;
+  	__errorLocation = Get ( LastErrorLocation ) ;
+  	__errorLocation.scriptName = GetValue ( __errorLocation ; 1 ) ;
+ 	__errorLocation.scriptStep = GetValue ( __errorLocation ; 2 ) ;
+  	__errorLocation.lineNumber = GetValue ( __errorLocation ; 3 ) ;
+  	__message = Case (
+  		 not IsEmpty ( customText ) ; 
+  		 	customText ; 
+   		not IsEmpty ( __errorDetail.message ) ; 
+			__errorDetail.message ; __defaultMessage 
+  		) ;
+ 	 __customErrorObject = Case ( __errorCode = 5499 and JSON.isValid ( __errorDetail.message ) ; __errorDetail.message )
+ ] ;
+
+	Case (
+		/*** return custom error object if set ***/
+
+		not IsEmpty ( __customErrorObject ) ;
+		__customErrorObject ;
+
+
+		/*** if LastErrorDetail is null then LastErrorLocation has the error ***/
+
+		IsEmpty ( __errorDetail ) ;
+		JSONSetElement (
+			"{}" ;
+			[ "code" ; __errorCode ; JSONNumber ] ;
+			[ "text" ; __message ; JSONString ] ;
+			[ "scriptName" ; __errorLocation.scriptName ; JSONString ] ;
+			[ "scriptStep" ; __errorLocation.scriptStep ; JSONString ] ;
+			[ "lineNumber" ; __errorLocation.lineNumber ; JSONNumber ] ;
+			[ "environment" ; getScriptEnvironment ; JSONObject ]
+		) ;
+
+		/*** LastErrorDetail has the error ***/
+
+		not IsEmpty ( __errorDetail ) ;
+		JSONSetElement (
+			"{}" ;
+			[ "code" ; __errorCode ; JSONNumber ] ;
+			[ "text" ; __message ; JSONString ] ;
+			[ "scriptName" ; __errorDetail.scriptName ; JSONString ] ;
+			[ "scriptStep" ; __errorDetail.scriptStep ; JSONString ] ;
+			[ "lineNumber" ; __errorDetail.lineNumber ; JSONNumber ] ;
+			[ "environment" ; getScriptEnvironment ; JSONObject ]
+		) ;
+
+		/*** default - basic error info ***/
+
+		 JSONSetElement (
+			"{}" ;
+			[ "code" ; __errorCode ; JSONNumber ] ;
+			[ "text" ; __message ; JSONString ] ;
+			[ "scriptName" ; Get ( ScriptName ) ; JSONString ] ;
+			[ "scriptStep" ; null ; JSONNull ] ;
+			[ "lineNumber" ; null ; JSONNull ] ;
+			[ "environment" ; getScriptEnvironment ; JSONObject ]
+		)		
+
+	)
+)
