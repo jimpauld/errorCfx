@@ -1,0 +1,8 @@
+/*
+ * null ()
+ *
+ * returns the undefined default result from a Case() statement which is treated as null
+ * for scenarios where the empty string "" would cause an error (e.g. setting a date field)
+ */
+
+Case ( False ; "" )
