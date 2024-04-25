@@ -1,3 +1,18 @@
+/* error.SetFromDAPI (  )
+ *
+ * DESCRIPTION :
+ *     returns an error object parsed from a FileMaker Data API response
+ *
+ *
+ * PARAMETERS
+ *     DAPIResponseObject
+ *  
+ *
+ * DEPENDENCIES :
+ *    none
+ * 
+ */
+
 Let(
 [
 	~error = JSONGetElement(DAPIResponseObject; "messages[0]" )
