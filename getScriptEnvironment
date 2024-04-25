@@ -1,8 +1,7 @@
-/* 
+/** 
  * =====================================
  * DESCRIPTION :
  *     returns an object with many useful environment values
- *
  *
  * PARAMETERS
  *     none
