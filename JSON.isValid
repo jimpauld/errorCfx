@@ -1,0 +1,6 @@
+Case (
+	Left ( JSONGetElement ( json ; "thiskeydoesntmatter" ) ; 3 ) = "? *" ;
+	False ;
+
+	True
+)
