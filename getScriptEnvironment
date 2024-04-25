@@ -1,5 +1,5 @@
 /* 
- *
+ * =====================================
  * DESCRIPTION :
  *     returns an object with many useful environment values
  *
@@ -9,8 +9,13 @@
  *
  * DEPENDENCIES :
  *     none
- * 
+ *
+ * HISTORY:
+ *	CREATED on 2023-09-23 Todd Geist, todd.geist@proofgeist.com
+ *
+ * =====================================
  */
+
 
 JSONSetElement (
 	"{}" ;
