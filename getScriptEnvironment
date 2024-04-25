@@ -1,3 +1,17 @@
+/* 
+ *
+ * DESCRIPTION :
+ *     returns an object with many useful environment values
+ *
+ *
+ * PARAMETERS
+ *     none
+ *
+ * DEPENDENCIES :
+ *     none
+ * 
+ */
+
 JSONSetElement (
 	"{}" ;
 	[ "fileName" ; Get ( FileName ) ; JSONString ] ;
