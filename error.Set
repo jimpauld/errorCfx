@@ -1,0 +1,35 @@
+/* error.Set (  )
+ *
+ * DESCRIPTION :
+ *     returns an error object based on the error information set in the error flags
+ *
+ *
+ * PARAMETERS
+ *     errorCode ( optional ) - the numeric code for the error
+ *     text ( optional ) - replaces the default error message
+ *     scriptStep ( optional ) - the name of the script step (or logical step) where the error occurred
+ *
+ * DEPENDENCIES :
+ *     errorText custom function
+ *.    getScriptEnvironment custom function
+ * 
+ */
+
+Let (
+	[
+		~errorCode = GetAsNumber ( errorCode ) ;
+		~errorMessage = Case ( IsEmpty ( text ) ; error.Text ( ~errorCode ) ; text ) ;
+
+		~scriptName = Get ( ScriptName )
+	] ;
+
+	JSONSetElement ( 
+		"{}" ; 
+		[ "code" ;  ~errorCode ; JSONNumber ] ;
+		[ "text" ;  ~errorMessage ; JSONString ] ;
+		[ "scriptName" ;  ~scriptName ; JSONString ] ;
+		[ "scriptStep" ;  scriptStep ; JSONString ] ;
+		[ "environment" ; getScriptEnvironment ; JSONObject ]
+	)
+
+)
