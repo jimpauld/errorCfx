@@ -1,4 +1,6 @@
-/* error.Set (  )
+/**
+ * =====================================
+error.Set (  )
  *
  * DESCRIPTION :
  *     returns an error object based on the error information set in the error flags
