@@ -6,7 +6,7 @@
  *	errorCode - the number code for the errorObject. It should return 0 for no error, and number for any other error.
  *
  * PARAMETERS:
- *	errorObject - error as a JSON Object
+ *	errorObject - error data structure as a JSON Object
  *
  * DEPENDENCIES:
  *	None
@@ -14,6 +14,8 @@
  * HISTORY:
  *	
  *	CREATED on 2023-09-23 Todd Geist, todd.geist@proofgeist.com
+ *    MODIFIED on 2024-05-01 Corn Walker, corn.walker@proofgeist.com
+ *        Changed invalid JSON test to use better-performing syntax
  *
  * =====================================
  */
@@ -25,7 +27,7 @@ Case(
 
 
       // invalid json
-      Left( JSONFormatElements ( errorObject ) ; 2 ) = "? "; JSONFormatElements ( errorObject ) ;
+      Left( JSONGetElement ( errorObject ; "ItDoesntMatterIfThisElementExistsOrNot" ) ; 3 ) = "? *"; JSONFormatElements ( errorObject ) ;
  
 
       // if there is an empty error code then no error
