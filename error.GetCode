@@ -22,7 +22,7 @@
 
 Case(
 
-      // nothing passed, no error. IS THIS RIGHT, or should this be the same as invalid json
+      // nothing passed, no error.
       IsEmpty(errorObject) ; 0;
 
 
