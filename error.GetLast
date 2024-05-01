@@ -11,6 +11,9 @@
  * PARAMETERS
  *     customText ( optional ) - replaces the default error message
  *
+ * RESULT
+ *     Error:{ code, test, scriptName, scriptStep, lineNumber, environment }
+ *
  * DEPENDENCIES :
  *     null custom function
  *     error.Text custom function
