@@ -14,8 +14,8 @@
  * HISTORY:
  *	
  *	CREATED on 2023-09-23 Todd Geist, todd.geist@proofgeist.com
- *    MODIFIED on 2024-05-01 Corn Walker, corn.walker@proofgeist.com
- *        Changed invalid JSON test to use better-performing syntax
+ *	MODIFIED on 2024-05-01 Corn Walker, corn.walker@proofgeist.com
+ *		Changed invalid JSON test to use better-performing syntax
  *
  * =====================================
  */
